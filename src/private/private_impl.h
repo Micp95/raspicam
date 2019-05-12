@@ -95,7 +95,7 @@ namespace raspicam {
             ~Private_Impl();
             /**Opens the camera and start capturing
             */
-            bool open ( bool StartCapture=true );
+            bool open ( bool StartCapture=true, int cameraNumber=0 );
             /**indicates if camera is open
             */
             bool isOpened() const
@@ -171,6 +171,9 @@ namespace raspicam {
             void setShutterSpeed ( unsigned int shutter ); //currently not  supported
             //sets frame rate. Can not be changed once camera is opened
             void setFrameRate ( int fps );
+            
+            void setCameraNum (int cameraNum);
+						bool setStereoMode (int mode, bool decimate=false, bool swapEyes=false);
 
             RASPICAM_FORMAT  getFormat() const {return State.captureFtm;}
             //Accessors
@@ -248,6 +251,11 @@ namespace raspicam {
             {
                 return State.vflip;
             }
+            
+            int getCameraNum() const
+            {
+                return State.cameraNum;
+						}
 
 
             //Returns an id of the camera. We assume the camera id is the one of the raspberry

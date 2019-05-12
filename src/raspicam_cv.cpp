@@ -52,8 +52,8 @@ namespace raspicam {
 
     /** Open  capturing device for video capturing
      */
-    bool RaspiCam_Cv::open ( void ) {
-        return _impl->open();
+    bool RaspiCam_Cv::open ( int cameraNumber ) {
+        return _impl->open(true,cameraNumber);
     }
     /**
      * Returns true if video capturing has been initialized already.
@@ -228,6 +228,13 @@ namespace raspicam {
     std::string RaspiCam_Cv::getId() const{
         return _impl->getId();
     }
+    
+    	/**
+     * Sets parameters for stereo mode functionality (compute module only).
+     */
+    bool RaspiCam_Cv::setStereoMode( int mode, bool decimate, bool swapEyes ) {
+        return _impl->setStereoMode( mode, decimate, swapEyes );
+		}
 
 }
 

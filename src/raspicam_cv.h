@@ -57,7 +57,7 @@ namespace raspicam {
         ~RaspiCam_Cv();
         /** Open  capturing device for video capturing
          */
-        bool open ( void );
+        bool open (int cameraNumber=0 );
         /**
          * Returns true if video capturing has been initialized already.
          */
@@ -142,6 +142,11 @@ namespace raspicam {
 		/** Sets metering type. See RASPICAM_METERING enum. 4 values as of current implementation.
 		*/
 		void setMetering ( int nEnumValue );
+
+		/**
+		 * Sets parameters for stereo mode functionality (compute module only).
+		 */
+		bool setStereoMode ( int mode, bool decimate=false, bool swapEyes=false );
 
         /** Returns the camera identifier. We assume the camera id is the one of the raspberry obtained using raspberry serial number obtained in /proc/cpuinfo
          */
